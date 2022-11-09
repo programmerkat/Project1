@@ -1,0 +1,40 @@
+K::Point_2 createpointlist( std::string s ){
+    std::vector < K::Point_2 >  v ;
+    K::Point_2::Rep p;
+    std::stringstream ss;
+    ss << s;
+    std::string temp;
+    int tein, a,b;
+    char tech;
+    while(!ss.eof()) {
+        ss>> temp;                                      //take words into temp_str one by one
+        if(std::stringstream(temp) >> tein) {           //try to convert string to int
+            ss>> a;
+            ss>> b;     
+            v.push_back(p);
+        }
+        else if (std::stringstream(temp) >> tech) {     //try to convert string to int
+            break;
+        } 
+        temp = "";                                      //clear temp string
+    }  
+    return Point_2(a,b);
+};
+
+Main
+std::vector < K::Point_2 > pointvector; 
+    std::ifstream myfile (argv[2]);
+
+    if ( myfile.is_open() ){
+        int mychar;
+        char ch;
+        std::string str, str1m, str2;
+        std::stringstream ss;
+            while ( std::getline(myfile,str)){
+                if ( str.at(0) != '#' )
+                    pointvector.push_back(createpointlist(str));
+            }
+    }
+    for (K::Point_2 i: pointvector){
+        std::cout << i << ' ';
+    }
